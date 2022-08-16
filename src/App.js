@@ -4,6 +4,7 @@ import Gallery from './components/Gallery'
 import SearchBar from './components/SearchBar'
 import { createResource as fetchData } from './helper'
 import Spinner from './components/Spinner'
+import { DataContext } from './context/DataContext'
 
 function App() {
   let [searchTerm, setSearchTerm] = useState('')
@@ -37,6 +38,9 @@ function App() {
     <div className="App">
         <SearchBar handleSearch={handleSearch} />
         {message}
+        <DataContext.Provider value ={data}>
+          <Gallery />
+        </DataContext.Provider>
         {renderGallery()}
     </div>
 )
